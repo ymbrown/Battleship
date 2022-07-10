@@ -6,6 +6,7 @@ var positions = []
 var targetvalues = []
 var messages = []
 var Ships
+var Targets
 func _ready():
 	# clear previous contents of the config file
 	config.clear()
@@ -16,12 +17,26 @@ func _ready():
 	
 	var UpdateShips = $ShipPlacement/ShipUI/UpdateShips
 	UpdateShips.connect("pressed", self, "DetermineHitShips")
+	
+	Targets = $TargetSystem
+	Targets.connect("save", self, "saveValues")
+	
+	var UpdateTargets = $TargetSystem/TargetUI/UpdateTarget
+	UpdateTargets.connect("pressed", self, "DetermineTargetState")
 
 func DetermineHitShips():
 	var hitpositions = []
 	if Ships.ShipsLocked == true:
 		hitpositions = loadValues(Ships.section, Ships.key)
 		Ships.IndicateHitShips(hitpositions)
+	else:
+		return
+	
+func DetermineTargetState():
+	var targetpositions = []
+	if Targets.TargetReady == true:
+		targetpositions = loadValues(Targets.section, Targets.key)
+		Targets.Update(targetpositions)
 	else:
 		return
 

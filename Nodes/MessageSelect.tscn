@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/MessageSelect.gd" type="Script" id=1]
+
+[node name="MessageSelect" type="HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 302, 0 )
+custom_constants/separation = 2
+script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_top = 13.0
+margin_right = 100.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 100, 0 )
+text = "temp"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+margin_left = 102.0
+margin_right = 302.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 200, 0 )
+text = "Select Message"
+clip_text = true

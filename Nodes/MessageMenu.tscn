@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Nodes/MessageSelect.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Font_Roboto_Light.tres" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/MessageMenu.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0.188235, 0.513726, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[node name="MessageMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 376.0
+margin_bottom = 264.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="SetMessages" type="Button" parent="."]
+margin_left = 136.0
+margin_top = 280.0
+margin_right = 235.0
+margin_bottom = 300.0
+text = "Set Messages"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 375.0
+margin_bottom = 264.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 36.0
+margin_top = 7.0
+margin_right = 338.0
+margin_bottom = 257.0
+rect_min_size = Vector2( 300, 250 )
+custom_constants/separation = 20
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 302.0
+margin_bottom = 19.0
+custom_fonts/font = SubResource( 2 )
+text = "Message Selection"
+align = 1
+
+[node name="MessageSelect" parent="CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 39.0
+margin_right = 302.0
+margin_bottom = 59.0
+boatname = "Aircraft Carrier"
+
+[node name="MessageSelect2" parent="CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 79.0
+margin_right = 302.0
+margin_bottom = 99.0
+boatname = "Cruiser"
+
+[node name="MessageSelect3" parent="CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 119.0
+margin_right = 302.0
+margin_bottom = 139.0
+boatname = "Submarine"
+
+[node name="MessageSelect4" parent="CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 159.0
+margin_right = 302.0
+margin_bottom = 179.0
+boatname = "Destroyer"

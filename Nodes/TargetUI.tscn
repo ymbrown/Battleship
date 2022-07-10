@@ -1,0 +1,19 @@
+[gd_scene format=2]
+
+[node name="TargetUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="SaveTarget" type="Button" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 92.0
+margin_bottom = 28.0
+text = "Save Target"
+
+[node name="UpdateTarget" type="Button" parent="."]
+margin_left = 144.0
+margin_top = 8.0
+margin_right = 252.0
+margin_bottom = 28.0
+text = "Update Targets"
