@@ -1,12 +1,27 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Assets/gameboard_grid_with_water-01.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/ShipGrid.gd" type="Script" id=2]
+[ext_resource path="res://Nodes/GridEdge.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/gameboard_grid_with_water-01.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/ShipGrid.gd" type="Script" id=3]
 
 [node name="ShipGrid" type="Node2D"]
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="grid" type="Sprite" parent="."]
-position = Vector2( 264, 304 )
+position = Vector2( 240, 240 )
 scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
+
+[node name="GridEdge" parent="." instance=ExtResource( 1 )]
+position = Vector2( -32, 240 )
+
+[node name="GridEdge2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 512, 240 )
+
+[node name="GridEdge3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 240, -32 )
+rotation = 1.57277
+
+[node name="GridEdge4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 240, 512 )
+rotation = 1.57277
