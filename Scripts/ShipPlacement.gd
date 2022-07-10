@@ -1,7 +1,5 @@
 extends Node2D
 
-var SaveSystem = load("res://Scripts/SaveSystem.gd").new()
-
 var ShipNum = 4
 var AircraftNum = 6
 var CruiserNum = 4
@@ -10,9 +8,16 @@ var DestroyerNum = 2
 var GridTotal = 36
 var GridRowLength = 6
 
+# Variables Related to Saving the Values
+var ShipHitIndicators = []
+var section = "Positions"
+var key = "Ships"
 var shipplacement = []
+var ShipsLocked = false
+signal saveShipPositions
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	ShipHitIndicators = get_tree().get_nodes_in_group("ShipHitIndicator")
 	var ReadyShips = $ShipUI/ReadyShips
 	ReadyShips.connect("button_down", self, "CheckPlacement")
 	var LockShips = $ShipUI/LockShips
@@ -27,6 +32,7 @@ func CheckPlacement():
 		$ShipUI/InvalidShipPopup.visible = true
 
 func DetermineShipPositions():
+	ShipsLocked = true
 	var offset = $ShipGrid.get_child_count() - GridTotal
 	print(offset)
 	var ships = get_tree().get_nodes_in_group("gridship")
@@ -61,11 +67,14 @@ func DetermineShipPositions():
 		boat_counter = boat_counter + 1
 
 	print(shipplacement)
-	SaveSystem.saveShips("Positions", "Ships", shipplacement)
-	
-	
+	emit_signal("saveShipPositions", section, key, shipplacement)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func IndicateHitShips(ShipHitPositions):
+	var num = len(ShipHitPositions)
+	if num == 36:
+		for i in num:
+			if ShipHitPositions[i] > 40:
+				ShipHitIndicators[i].putX()
+		print("Updated Ship Hit Indicators")
+	else:
+		return

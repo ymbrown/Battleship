@@ -3,39 +3,36 @@ var save_path = "user://boatplacement.cfg"
 var config = ConfigFile.new()
 var load_response = config.load(save_path)
 var positions = []
-var xpositions = []
 var targetvalues = []
-
-
-signal UpdateGrid
-signal UpdateTarget
-var board = []
-
+var messages = []
+var Ships
 func _ready():
-	pass
-
-func saveShips(section, key, grid):
-	config.set_value(section, key, grid)
+	# clear previous contents of the config file
+	config.clear()
 	config.save(save_path)
 
-func loadShips(section, key):
-	var err = config.load(save_path)
-	if err != OK:
-		return
-	positions = config.get_value(section, key, positions)
-	emit_signal("UpdateGrid", positions)
-
-func saveTargets(targetvalues):
-		config.set_value("Positions", "Targets", targetvalues)
-		config.save(save_path)
-		
-func loadTargets():
-	var err = config.load(save_path)
-	if err != OK:
-		return
-	targetvalues = config.get_value("Positions", "Targets", targetvalues)
-	emit_signal("UpdateTarget", targetvalues)
+	Ships = $ShipPlacement
+	Ships.connect("saveShipPositions", self, "saveValues")
 	
-func saveMessages(msg):
-	config.set_value("Positions", "Messages", msg)
+	var UpdateShips = $ShipPlacement/ShipUI/UpdateShips
+	UpdateShips.connect("pressed", self, "DetermineHitShips")
+
+func DetermineHitShips():
+	var hitpositions = []
+	if Ships.ShipsLocked == true:
+		hitpositions = loadValues(Ships.section, Ships.key)
+		Ships.IndicateHitShips(hitpositions)
+	else:
+		return
+
+func saveValues(section, key, value):
+	config.set_value(section, key, value)
 	config.save(save_path)
+
+func loadValues(section, key):
+	var err = config.load(save_path)
+	var value
+	if err != OK:
+		return
+	value = config.get_value(section, key, value)
+	return value
