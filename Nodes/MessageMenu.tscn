@@ -69,3 +69,5 @@ margin_top = 159.0
 margin_right = 302.0
 margin_bottom = 179.0
 boatname = "Destroyer"
+
+[connection signal="pressed" from="SetMessages" to="." method="_on_SetMessages_pressed"]

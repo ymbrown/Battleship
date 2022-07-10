@@ -13,7 +13,6 @@ script = ExtResource( 4 )
 script = ExtResource( 2 )
 
 [node name="ShipPlacement" parent="SaveSystem" instance=ExtResource( 1 )]
-visible = false
 position = Vector2( 8, 184 )
 
 [node name="TargetSystem" parent="SaveSystem" instance=ExtResource( 3 )]
