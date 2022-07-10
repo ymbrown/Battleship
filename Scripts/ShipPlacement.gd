@@ -1,4 +1,7 @@
 extends Node2D
+
+var SaveSystem = load("res://Scripts/SaveSystem.gd").new()
+
 var ShipNum = 4
 var AircraftNum = 6
 var CruiserNum = 4
@@ -58,6 +61,7 @@ func DetermineShipPositions():
 		boat_counter = boat_counter + 1
 
 	print(shipplacement)
+	SaveSystem.saveShips("Positions", "Ships", shipplacement)
 	
 	
 
