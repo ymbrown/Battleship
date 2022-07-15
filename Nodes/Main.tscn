@@ -13,14 +13,13 @@ script = ExtResource( 4 )
 script = ExtResource( 2 )
 
 [node name="ShipPlacement" parent="SaveSystem" instance=ExtResource( 1 )]
-position = Vector2( 8, 184 )
+position = Vector2( 8, 8 )
 
 [node name="TargetSystem" parent="SaveSystem" instance=ExtResource( 3 )]
-visible = false
-position = Vector2( 32, 24 )
+position = Vector2( 32, 0 )
 
 [node name="MessageMenu" parent="SaveSystem" instance=ExtResource( 5 )]
-margin_left = 632.0
-margin_top = 600.0
-margin_right = 632.0
-margin_bottom = 600.0
+margin_left = 48.0
+margin_top = 584.0
+margin_right = 48.0
+margin_bottom = 584.0
