@@ -4,6 +4,7 @@ onready var boatmessage1 = $CenterContainer/VBoxContainer/MessageSelect
 onready var boatmessage2 = $CenterContainer/VBoxContainer/MessageSelect2
 onready var boatmessage3 = $CenterContainer/VBoxContainer/MessageSelect3
 onready var boatmessage4 = $CenterContainer/VBoxContainer/MessageSelect4
+signal showTarget
 signal saveMessages
 var section = "Messages"
 var key = "msg"
@@ -18,6 +19,9 @@ func _ready():
 
 func _on_SetMessages_pressed():
 	make_msg_array()
+	emit_signal("showTarget")
+	$SetMessages.disabled = true
+	
 
 
 func make_msg_array():

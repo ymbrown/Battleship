@@ -19,11 +19,11 @@ func saveTarget():
 	var num = 0;
 	var i = 0;
 	for child in targets:
-		if child.selected == 1:
+		if child.targeted == 1:
 			num += 1
 			if num > 1:
 				return
-		targetvalues[i] = child.selected
+		targetvalues[i] = child.targeted
 		i += 1
 	TargetReady = true
 	emit_signal("save", section, key, targetvalues)
@@ -32,6 +32,6 @@ func Update(targetposition):
 	targetvalues = targetposition
 	var i  = 0;
 	for child in targets:
-		child.selected = targetvalues[i]
+		child.targeted = targetvalues[i]
 		child.UpdateColor()
 		i += 1

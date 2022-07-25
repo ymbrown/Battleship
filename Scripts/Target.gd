@@ -1,11 +1,7 @@
 extends Position2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var locked = false
-var selected = 0
+var targeted = 0
 var xpositions = []
 
 # Called when the node enters the scene tree for the first time.
@@ -20,25 +16,25 @@ func _draw():
 	draw_circle(cen, rad, col)
 
 func _on_Area2D_input_event(_viewport, _event, _shape_idx):
-	if selected <= 1:
+	if targeted <= 1:
 		if Input.is_action_just_pressed("left"):
 			xpositions = get_tree().get_nodes_in_group("target")
 			for child in xpositions:
-				if child.selected == 1:
-					child.selected = 0
+				if child.targeted == 1:
+					child.targeted = 0
 					child.UpdateColor()
 			modulate = Color.cornflower
-			selected = 1
+			targeted = 1
 		if Input.is_action_just_pressed("right"):
 			modulate = Color.transparent
-			selected = 0
+			targeted = 0
 
 func UpdateColor():
-	if selected == 1:
+	if targeted == 1:
 		modulate = Color.cornflower
-	elif selected == 2:
+	elif targeted == 2:
 		modulate = Color.gray
-	elif selected == 3:
+	elif targeted == 3:
 		modulate = Color.red
 	else:
 		modulate = Color.transparent
