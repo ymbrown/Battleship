@@ -7,6 +7,7 @@ var SubmarineNum = 3
 var DestroyerNum = 2
 var GridTotal = 36
 var GridRowLength = 6
+signal loseCondition
 
 # Variables Related to Saving the Values
 var ShipHitIndicators = []
@@ -71,10 +72,14 @@ func DetermineShipPositions():
 
 func IndicateHitShips(ShipHitPositions):
 	var num = len(ShipHitPositions)
+	var lose_counter = 0;
 	if num == 36:
 		for i in num:
-			if ShipHitPositions[i] > 40:
+			if ShipHitPositions[i] > 50:
 				ShipHitIndicators[i].putX()
+				lose_counter += 1
 		print("Updated Ship Hit Indicators")
 	else:
 		return
+	if lose_counter >= 15:
+		emit_signal("loseCondition")

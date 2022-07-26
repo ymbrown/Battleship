@@ -4,6 +4,7 @@ var targets = []
 var targetvalues = []
 var TargetReady = false
 signal save
+signal winCondition
 var section = "Positions"
 var key = "Targets"
 var enableUpdate
@@ -30,8 +31,13 @@ func saveTarget():
 	
 func Update(targetposition):
 	targetvalues = targetposition
-	var i  = 0;
+	var i  = 0
+	var win_counter = 0
 	for child in targets:
 		child.targeted = targetvalues[i]
 		child.UpdateColor()
+		if child.targeted == 3:
+			win_counter += 1
 		i += 1
+	if win_counter >= 15:
+		emit_signal("winCondition")

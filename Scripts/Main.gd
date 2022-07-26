@@ -6,25 +6,35 @@ onready var messagesystem = $SaveSystem/MessageMenu
 onready var NewGame = $MainMenu
 onready var BacktoMainMenu = $MainUI/BacktoMenu
 onready var UI = $MainUI
+onready var endgameButton = $EndGame/EndGameNewGame
+onready var endgame = $EndGame
 var targetOn = false
 var MessageOn = false
-
+var reloadGame = false
+var test
 func _ready():
 	UI.visible = false
 	targetsystem.visible = false
 	shipsystem.visible = false
 	messagesystem.visible = false
-	var shipslocked = $SaveSystem/ShipPlacement
-	shipslocked.connect("saveShipPositions", self, "enablescreens")
+	endgame.visible = false
+	shipsystem.connect("saveShipPositions", self, "enablescreens")
 	NewGame.connect("NewGame", self, "startGame")
 	NewGame.connect("Back", self, "MainMenuBack")
 	BacktoMainMenu.connect("pressed",self,"ShowMainMenu")
 	messagesystem.connect("showTarget", self,"ShowTargetGrid")
+	targetsystem.connect("winCondition", self, "WinEvent")
+	shipsystem.connect("loseCondition", self, "LoseEvent")
+	endgameButton.connect("pressed", self, "startGame")
 	
 func startGame():
-	UI.visible = true
-	shipsystem.visible = true
-	NewGame.visible = false
+	if !reloadGame:
+		UI.visible = true
+		shipsystem.visible = true
+		NewGame.visible = false
+		reloadGame = true
+	else:
+		test = get_tree().reload_current_scene()
 
 func ShowTargetGrid():
 	targetsystem.visible = true
@@ -35,6 +45,7 @@ func ShowMainMenu():
 	targetsystem.visible = false
 	messagesystem.visible = false
 	shipsystem.visible = false
+	UI.visible = false
 
 func MainMenuBack():
 	NewGame.visible = false
@@ -49,3 +60,20 @@ func enablescreens(_section, _key, _shipplacement):
 	messagesystem.visible = true
 	MessageOn = true
 	
+func WinEvent():
+	endgame.visible = true
+	UI.visible = false
+	targetsystem.visible = false
+	shipsystem.visible = false
+	messagesystem.visible = false
+	endgame.won = true
+	endgame.ShowEndGameScreen()
+
+func LoseEvent():
+	endgame.visible = true
+	UI.visible = false
+	targetsystem.visible = false
+	shipsystem.visible = false
+	messagesystem.visible = false
+	endgame.lost = true
+	endgame.ShowEndGameScreen()
