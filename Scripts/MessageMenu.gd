@@ -20,10 +20,11 @@ func _ready():
 func _on_SetMessages_pressed():
 	make_msg_array()
 	emit_signal("showTarget")
-	$SetMessages.disabled = true
+	boatmessage1.disable_options()
+	boatmessage2.disable_options()
+	boatmessage3.disable_options()
+	boatmessage4.disable_options()
 	
-
-
 func make_msg_array():
 	var boat_counter = [0,0,0,0]
 	for number in placements:

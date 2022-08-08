@@ -8,6 +8,8 @@ onready var BacktoMainMenu = $MainUI/BacktoMenu
 onready var UI = $MainUI
 onready var endgameButton = $EndGame/EndGameNewGame
 onready var endgame = $EndGame
+onready var client = $ClientHandler
+
 var targetOn = false
 var MessageOn = false
 var reloadGame = false
@@ -26,6 +28,8 @@ func _ready():
 	targetsystem.connect("winCondition", self, "WinEvent")
 	shipsystem.connect("loseCondition", self, "LoseEvent")
 	endgameButton.connect("pressed", self, "startGame")
+	client.connect("serverMSG", self, "rxServerMsg")
+	
 	
 func startGame():
 	if !reloadGame:
@@ -77,3 +81,12 @@ func LoseEvent():
 	messagesystem.visible = false
 	endgame.lost = true
 	endgame.ShowEndGameScreen()
+	
+func rxServerMsg(msg):
+	if msg == "USRP":
+		pass
+		#OS.execute("pythonpath", ["filepath"], false)
+		print("USRP RX")
+	else:
+		#$SaveSystem.OverWrite(msg)
+		print(msg)

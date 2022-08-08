@@ -47,3 +47,10 @@ func get_msg_part(num):
 	else:
 		a = msg.substr(indx_start, msglen - 1)
 	return a
+
+func disable_options():
+	var value = dropdown.get_selected_id()
+	for i in [0, 1, 2]:
+		if i != value:
+			dropdown.set_item_disabled(i, true)
+	

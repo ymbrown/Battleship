@@ -7,11 +7,14 @@ var targetvalues = []
 var messages = []
 var Ships
 var Targets
+var Player  = "A"
 func _ready():
 	# clear previous contents of the config file
 	config.clear()
 	config.save(save_path)
 
+	saveValues("Player", "State", Player)
+	
 	Ships = $ShipPlacement
 	Ships.connect("saveShipPositions", self, "saveShipPos")
 	
@@ -60,3 +63,17 @@ func loadValues(section, key):
 		return
 	value = config.get_value(section, key, value)
 	return value
+
+func OverWrite(msg):
+	config.open(save_path, File.WRITE)
+	config.store_string(msg)
+	config.save(save_path)
+	config.close()
+	
+	var err = config.load(save_path)
+	var value
+	if err != OK:
+		return
+	value = config.get_value("Player", "State", value)
+	print(value)
+	
