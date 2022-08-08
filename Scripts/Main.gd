@@ -14,6 +14,7 @@ var targetOn = false
 var MessageOn = false
 var reloadGame = false
 var test
+
 func _ready():
 	UI.visible = false
 	targetsystem.visible = false
@@ -83,10 +84,11 @@ func LoseEvent():
 	endgame.ShowEndGameScreen()
 	
 func rxServerMsg(msg):
-	if msg == "USRP":
+	var part = msg.substr(0,4)
+	if part == "USRP":
 		pass
 		#OS.execute("pythonpath", ["filepath"], false)
-		print("USRP RX")
-	else:
-		#$SaveSystem.OverWrite(msg)
+		print("USRP start")
+	elif part == "[Pla":
+		$SaveSystem.OverWrite(msg)
 		print(msg)
