@@ -1,7 +1,8 @@
 extends Node
 
 const HOST: String = "127.0.0.1"
-const PORT: int = 5000
+#const HOST: String = "192.168.1.1"
+const PORT: int = 8000
 const RECONNECT_TIMEOUT: float = 3.0
 
 const Client = preload("res://Scripts/client.gd")
@@ -24,6 +25,7 @@ func _connect_after_timeout(timeout: float) -> void:
 
 func _handle_client_connected() -> void:
 	print("Client connected to server.")
+	sendMsg("Hello")
 
 func _handle_client_data(data: PoolByteArray) -> void:
 	msg = data.get_string_from_utf8()

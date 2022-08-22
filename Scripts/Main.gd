@@ -16,6 +16,7 @@ var reloadGame = false
 var test
 
 func _ready():
+	setENV()
 	UI.visible = false
 	targetsystem.visible = false
 	shipsystem.visible = false
@@ -31,6 +32,8 @@ func _ready():
 	endgameButton.connect("pressed", self, "startGame")
 	client.connect("serverMSG", self, "rxServerMsg")
 	
+func setENV():
+	pass
 	
 func startGame():
 	if !reloadGame:
@@ -55,6 +58,7 @@ func ShowMainMenu():
 func MainMenuBack():
 	NewGame.visible = false
 	shipsystem.visible = true
+	UI.visible = false
 	if MessageOn:
 		messagesystem.visible = true
 	
