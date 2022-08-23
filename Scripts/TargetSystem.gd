@@ -5,6 +5,7 @@ var targetvalues = []
 var TargetReady = false
 signal save
 signal winCondition
+signal sendFile
 var section = "Positions"
 var key = "Targets"
 var enableUpdate
@@ -28,6 +29,7 @@ func saveTarget():
 		i += 1
 	TargetReady = true
 	emit_signal("save", section, key, targetvalues)
+	emit_signal("sendFile")
 	
 func Update(targetposition):
 	targetvalues = targetposition

@@ -65,15 +65,15 @@ func loadValues(section, key):
 	return value
 
 func OverWrite(msg):
-	config.open(save_path, File.WRITE)
-	config.store_string(msg)
-	config.save(save_path)
-	config.close()
+	var file = File.new()
+	file.open(save_path, File.WRITE)
+	file.store_string(msg)
+	file.save(save_path)
+	file.close()
 	
-	var err = config.load(save_path)
-	var value
-	if err != OK:
-		return
-	value = config.get_value("Player", "State", value)
-	print(value)
-	
+func getConfigContents():
+	var file = File.new()
+	file.open(save_path, File.READ)
+	var content = file.get_as_text()
+	file.close()
+	return content

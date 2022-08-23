@@ -9,6 +9,8 @@ onready var UI = $MainUI
 onready var endgameButton = $EndGame/EndGameNewGame
 onready var endgame = $EndGame
 onready var client = $ClientHandler
+onready var savesystem = $SaveSystem
+onready var prevent = $Prevention
 
 var targetOn = false
 var MessageOn = false
@@ -17,6 +19,7 @@ var test
 
 func _ready():
 	setENV()
+	prevent.visible = false
 	UI.visible = false
 	targetsystem.visible = false
 	shipsystem.visible = false
@@ -28,6 +31,7 @@ func _ready():
 	BacktoMainMenu.connect("pressed",self,"ShowMainMenu")
 	messagesystem.connect("showTarget", self,"ShowTargetGrid")
 	targetsystem.connect("winCondition", self, "WinEvent")
+	targetsystem.connect("sendFile", self, "sendData")
 	shipsystem.connect("loseCondition", self, "LoseEvent")
 	endgameButton.connect("pressed", self, "startGame")
 	client.connect("serverMSG", self, "rxServerMsg")
@@ -87,12 +91,19 @@ func LoseEvent():
 	endgame.lost = true
 	endgame.ShowEndGameScreen()
 	
+func sendData():
+	var content = savesystem.getConfigContents()
+	client.sendMsg(content)
+
 func rxServerMsg(msg):
 	var part = msg.substr(0,4)
 	if part == "USRP":
-		pass
 		#OS.execute("pythonpath", ["filepath"], false)
 		print("USRP start")
 	elif part == "[Pla":
-		$SaveSystem.OverWrite(msg)
+		#savesystem.OverWrite(msg)
+		print("Got config Contents", msg)
+	elif part == "Bloc":
+		prevent.visible = true
+	else:
 		print(msg)

@@ -25,7 +25,7 @@ func _connect_after_timeout(timeout: float) -> void:
 
 func _handle_client_connected() -> void:
 	print("Client connected to server.")
-	sendMsg("Hello")
+	sendMsg("Bye")
 
 func _handle_client_data(data: PoolByteArray) -> void:
 	msg = data.get_string_from_utf8()

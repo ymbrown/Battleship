@@ -39,3 +39,7 @@ margin_bottom = 24.0
 [node name="EndGame" parent="." instance=ExtResource( 8 )]
 
 [node name="ClientHandler" parent="." instance=ExtResource( 9 )]
+
+[node name="Prevention" type="Control" parent="."]
+margin_right = 1056.0
+margin_bottom = 896.0
