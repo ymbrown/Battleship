@@ -16,6 +16,8 @@ var targetOn = false
 var MessageOn = false
 var reloadGame = false
 var test
+var PYTHONPATH = "/usr/bin/python3"
+var RADIOPATH = ["/home/ni30605/BattleshipDemo/Backend/Transmitter/TX_main.py"]
 
 func _ready():
 	
@@ -48,7 +50,7 @@ func _ready():
 	
 	client.connect("serverMSG", self, "rxServerMsg")
 
-
+# Shows start menu
 func startGame():
 	if !reloadGame:
 		UI.visible = true
@@ -58,10 +60,12 @@ func startGame():
 	else:
 		test = get_tree().reload_current_scene()
 
+# Enables Target system
 func ShowTargetGrid():
 	targetsystem.visible = true
 	targetOn = true
 	
+# Go from game to main menu
 func ShowMainMenu():
 	NewGame.visible = true
 	targetsystem.visible = false
@@ -69,6 +73,7 @@ func ShowMainMenu():
 	shipsystem.visible = false
 	UI.visible = false
 
+# From main menu back to game
 func MainMenuBack():
 	NewGame.visible = false
 	shipsystem.visible = true
@@ -78,7 +83,8 @@ func MainMenuBack():
 	
 	if targetOn:
 		targetsystem.visible = true
-	
+
+
 func enablescreens(_section, _key, _shipplacement):
 	messagesystem.visible = true
 	MessageOn = true
@@ -108,7 +114,7 @@ func sendData():
 func rxServerMsg(msg):
 	var part = msg.substr(0,4)
 	if part == "USRP":
-		OS.execute("/usr/bin/python3", ["/home/ni30605/BattleshipDemo/Backend/Transmitter/TX_main.py"], false)
+		OS.execute(PYTHONPATH, RADIOPATH, false)
 		print("USRP start")
 	elif part == "[Pla":
 		#savesystem.OverWrite(msg)
