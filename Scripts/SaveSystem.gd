@@ -68,7 +68,6 @@ func OverWrite(msg):
 	var file = File.new()
 	file.open(save_path, File.WRITE)
 	file.store_string(msg)
-	file.save(save_path)
 	file.close()
 	
 func getConfigContents():
