@@ -19,22 +19,22 @@ func add_items():
 			dropdown.add_item("This  is the aircarft message", 0)
 			dropdown.add_item("This will be the second aircraft message", 1)
 			dropdown.add_item("aircarft message three", 2)
-			num_tiles = 5
+			num_tiles = 6
 		"Cruiser": #4
 			dropdown.add_item("This is the first cruiser message", 0)
 			dropdown.add_item("message number two for cruiser", 1)
 			dropdown.add_item("and cruiser message three", 2)
-			num_tiles = 3
+			num_tiles = 4
 		"Submarine": #3
 			dropdown.add_item("First submarine message", 0)
 			dropdown.add_item("sub message two", 1)
 			dropdown.add_item("submarine message three", 2)
-			num_tiles = 2
+			num_tiles = 3
 		"Destroyer": #2
 			dropdown.add_item("Mayday Mayday", 0)
 			dropdown.add_item("Word Two", 1)
 			dropdown.add_item("Send Help", 2)
-			num_tiles = 1
+			num_tiles = 2
 	
 func get_msg_part(num):
 	var msg = dropdown.get_item_text(dropdown.get_selected_id())
