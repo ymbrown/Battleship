@@ -13,7 +13,7 @@ P2 = GameInfo(p2filepath)
 for i in range(0, GRIDSIZE):
     if P2.targets[i] == '1' and P1.ships[i] != '0':
         P1.ships[i] = '5' + P1.ships[i]
-        P1.msg[i] = 'X'
+        P1.msg[i] = '"X"'
         P2.targets[i] = '3'
     elif P2.targets[i] == '1' and P1.ships[i] == '0':
         P2.targets[i] = '2'
@@ -22,7 +22,7 @@ for i in range(0, GRIDSIZE):
 for i in range(0, GRIDSIZE):
     if P1.targets[i] == '1' and P2.ships[i] != '0':
         P2.ships[i] = '5' + P2.ships[i]
-        P2.msg[i] = 'X'
+        P2.msg[i] = '"X"'
         P1.targets[i] = '3'
     elif P1.targets[i] == '1' and P2.ships[i] == '0':
         P1.targets[i] = '2'
