@@ -77,7 +77,7 @@ func ShowMainMenu():
 func MainMenuBack():
 	NewGame.visible = false
 	shipsystem.visible = true
-	UI.visible = false
+	UI.visible = true
 	if MessageOn:
 		messagesystem.visible = true
 	
@@ -122,6 +122,8 @@ func rxServerMsg(msg):
 	elif part == "Bloc":
 		prevent.visible = true
 	elif part == "Unbl":
+		savesystem.DetermineHitShips()
+		savesystem.DetermineTargetState()
 		prevent.visible = false
 	else:
 		print(msg)

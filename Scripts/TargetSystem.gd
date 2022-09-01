@@ -1,5 +1,5 @@
 extends Node2D
-
+onready var targeterror = $TargetUI/TargetError
 var targets = []
 var targetvalues = []
 var TargetReady = false
@@ -27,9 +27,12 @@ func saveTarget():
 				return
 		targetvalues[i] = child.targeted
 		i += 1
-	TargetReady = true
-	emit_signal("save", section, key, targetvalues)
-	emit_signal("sendFile")
+	if num == 1:
+		TargetReady = true
+		emit_signal("save", section, key, targetvalues)
+		emit_signal("sendFile")
+	else:
+		targeterror.visible = true
 	
 func Update(targetposition):
 	targetvalues = targetposition

@@ -18,8 +18,8 @@ func _ready():
 	Ships = $ShipPlacement
 	Ships.connect("saveShipPositions", self, "saveShipPos")
 	
-	var UpdateShips = $ShipPlacement/ShipUI/UpdateShips
-	UpdateShips.connect("pressed", self, "DetermineHitShips")
+	#var UpdateShips = $ShipPlacement/ShipUI/UpdateShips
+	#UpdateShips.connect("pressed", self, "DetermineHitShips")
 	
 	var Messages = $MessageMenu
 	Messages.connect("saveMessages", self, "saveValues")
@@ -27,8 +27,8 @@ func _ready():
 	Targets = $TargetSystem
 	Targets.connect("save", self, "saveValues")
 	
-	var UpdateTargets = $TargetSystem/TargetUI/UpdateTarget
-	UpdateTargets.connect("pressed", self, "DetermineTargetState")
+	#var UpdateTargets = $TargetSystem/TargetUI/UpdateTarget
+	#UpdateTargets.connect("pressed", self, "DetermineTargetState")
 
 func saveShipPos(section, key, value):
 	saveValues(section, key, value)

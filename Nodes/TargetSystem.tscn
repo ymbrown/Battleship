@@ -11,7 +11,7 @@ script = ExtResource( 3 )
 position = Vector2( 536, 8 )
 
 [node name="TargetUI" parent="." instance=ExtResource( 2 )]
-margin_left = 656.0
+margin_left = 728.0
 margin_top = 496.0
-margin_right = 656.0
+margin_right = 728.0
 margin_bottom = 496.0
