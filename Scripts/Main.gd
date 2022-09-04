@@ -17,12 +17,12 @@ var MessageOn = false
 var reloadGame = false
 var test
 var PYTHONPATH = "/usr/bin/python3"
-var RADIOPATH = ["/home/ni30605/BattleshipDemo/Backend/Transmitter/TX_main.py"]
+var RADIOPATH = ["/local_disk/code/BattleshipDemo/Backend/Transmitter/TX_main.py"]
 
 func _ready():
 	
 	# set environment variables
-	#setENV()
+	setENV()
 	
 	# Hide everything but main menu
 	prevent.visible = false
@@ -112,12 +112,18 @@ func sendData():
 	client.sendMsg(content)
 
 func rxServerMsg(msg):
+	var output = []
 	var part = msg.substr(0,4)
 	if part == "USRP":
-		OS.execute(PYTHONPATH, RADIOPATH, false)
 		print("USRP start")
+		savesystem.saveValues("Player", "State", "T")
+		OS.execute(PYTHONPATH, RADIOPATH, true, output)
+	elif part == "JAM ":
+		print("Jamming Started")
+		savesystem.saveValues("Player", "State", "A")
+		OS.execute(PYTHONPATH, RADIOPATH, true, output)
 	elif part == "[Pla":
-		#savesystem.OverWrite(msg)
+		savesystem.OverWrite(msg)
 		print("Got config Contents", msg)
 	elif part == "Bloc":
 		prevent.visible = true
@@ -128,7 +134,7 @@ func rxServerMsg(msg):
 	else:
 		print(msg)
 
-func setupEnv():
+func setENV():
 	OS.set_environment("LIBRARY_PATH","/local_disk/install/lib")
 	OS.set_environment("LD_LIBRARY_PATH", "/local_disk/install/lib:/local_disk/install/lib64:/usr/local/lib:/usr/local/lib64:/usr/local/lib")
 	OS.set_environment("GR_CONF_GRC_GLOBAL_BLOCKS_PATH", "/local_disk/install/share/gnuradio/grc/blocks")

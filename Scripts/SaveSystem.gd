@@ -1,5 +1,5 @@
 extends Node
-var save_path = "user://boatplacement.cfg"
+var save_path = "/local_disk/code/BattleshipDemo/Config/boatplacement.cfg"
 var config = ConfigFile.new()
 var load_response = config.load(save_path)
 var positions = []
