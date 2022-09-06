@@ -1,7 +1,7 @@
 extends Node
 
-const HOST: String = "127.0.0.1"
-#const HOST: String = "192.168.1.1"
+#const HOST: String = "127.0.0.1"
+const HOST: String = "192.168.10.100"
 const PORT: int = 8000
 const RECONNECT_TIMEOUT: float = 3.0
 
