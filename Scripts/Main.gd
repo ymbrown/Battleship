@@ -17,7 +17,7 @@ var MessageOn = false
 var reloadGame = false
 var test
 var PYTHONPATH = "/usr/bin/python3"
-var RADIOPATH = ["/local_disk/code/BattleshipDemo/Backend/Transmitter/TX_main.py"]
+var RADIOPATH = ["/home/ni30605/BattleshipDemo/Backend/Transmitter/TX_main.py"]
 
 func _ready():
 	
@@ -134,6 +134,8 @@ func rxServerMsg(msg):
 	elif part == "Bloc":
 		prevent.visible = true
 	elif part == "Unbl":
+		savesystem.DetermineHitShips()
+		savesystem.DetermineTargetState()
 		prevent.visible = false
 	else:
 		print(msg)
