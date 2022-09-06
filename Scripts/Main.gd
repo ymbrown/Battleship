@@ -118,10 +118,12 @@ func rxServerMsg(msg):
 		print("USRP start")
 		savesystem.saveValues("Player", "State", "T")
 		OS.execute(PYTHONPATH, RADIOPATH, true, output)
+		print(output)
 	elif part == "JAM ":
 		print("Jamming Started")
 		savesystem.saveValues("Player", "State", "A")
 		OS.execute(PYTHONPATH, RADIOPATH, true, output)
+		print(output)
 	elif part == "[Pla":
 		savesystem.OverWrite(msg)
 		print("Got config Contents", msg)

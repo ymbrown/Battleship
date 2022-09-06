@@ -21,21 +21,23 @@ custom_styles/panel = SubResource( 2 )
 
 [node name="BacktoMenu" type="Button" parent="."]
 margin_left = 216.0
-margin_top = 184.0
+margin_top = 190.0
 margin_right = 350.0
-margin_bottom = 204.0
+margin_bottom = 210.0
 text = "Back to Main Menu"
 
 [node name="Instructions" type="Label" parent="."]
-margin_left = 24.0
-margin_top = 24.0
-margin_right = 544.0
-margin_bottom = 153.0
+margin_left = 23.0
+margin_top = 11.0
+margin_right = 543.0
+margin_bottom = 184.0
 custom_fonts/font = SubResource( 1 )
 text = "How to Play
 1. Place all the ships on the grid
-2. Ready the ships on the grid
-3. Select which messages will go on each ship
-4. Pick a place to target opponent
-5. Once given the ready from instructors, update your target and ship grid"
+2. Press \"Ready Ships\" button
+3. Select your messages for each ship
+4. Click \"Set Messages\" button
+4. On the target grid, pick a place to target opponent
+5. Press \"Save Target\" button
+6. Repeat steps 4 and 5 until game ends"
 autowrap = true
