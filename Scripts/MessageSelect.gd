@@ -16,24 +16,24 @@ func _ready():
 func add_items():
 	match boatname:
 		"Aircraft Carrier": #6
-			dropdown.add_item("This  is the aircarft message", 0)
-			dropdown.add_item("This will be the second aircraft message", 1)
-			dropdown.add_item("aircarft message three", 2)
+			dropdown.add_item("November One Two Three Four Golf", 0)
+			dropdown.add_item("After departure, climb straight ahead London 2 DME", 1)
+			dropdown.add_item("Cleared to land runway", 2)
 			num_tiles = 6
 		"Cruiser": #4
-			dropdown.add_item("This is the first cruiser message", 0)
-			dropdown.add_item("message number two for cruiser", 1)
-			dropdown.add_item("and cruiser message three", 2)
+			dropdown.add_item("Mayday Mayday Mayday", 0)
+			dropdown.add_item("Manned and Ready", 1)
+			dropdown.add_item("Stand Easy", 2)
 			num_tiles = 4
 		"Submarine": #3
-			dropdown.add_item("First submarine message", 0)
-			dropdown.add_item("sub message two", 1)
-			dropdown.add_item("submarine message three", 2)
+			dropdown.add_item("Set depth at one two feet", 0)
+			dropdown.add_item("Carry on", 1)
+			dropdown.add_item("Man your stations", 2)
 			num_tiles = 3
 		"Destroyer": #2
-			dropdown.add_item("Mayday Mayday", 0)
-			dropdown.add_item("Word Two", 1)
-			dropdown.add_item("Send Help", 2)
+			dropdown.add_item("All clear", 0)
+			dropdown.add_item("SOS", 1)
+			dropdown.add_item("Stations", 2)
 			num_tiles = 2
 	
 func get_msg_part(num):

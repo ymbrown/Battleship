@@ -24,6 +24,7 @@ func _on_SetMessages_pressed():
 	boatmessage2.disable_options()
 	boatmessage3.disable_options()
 	boatmessage4.disable_options()
+	$SetMessages.disabled = true
 	
 func make_msg_array():
 	var boat_counter = [0,0,0,0]
