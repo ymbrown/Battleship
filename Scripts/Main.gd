@@ -140,7 +140,7 @@ func rxServerMsg(msg):
 	else:
 		print(msg)
 
-func setupEnv():
+func setENV():
 	OS.set_environment("LIBRARY_PATH","/local_disk/install/lib")
 	OS.set_environment("LD_LIBRARY_PATH", "/local_disk/install/lib:/local_disk/install/lib64:/usr/local/lib:/usr/local/lib64:/usr/local/lib")
 	OS.set_environment("GR_CONF_GRC_GLOBAL_BLOCKS_PATH", "/local_disk/install/share/gnuradio/grc/blocks")
