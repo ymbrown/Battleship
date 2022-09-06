@@ -12,7 +12,7 @@ signal loseCondition
 # Variables Related to Saving the Values
 var ShipHitIndicators = []
 var section = "Positions"
-var key = "Ships"
+var key = "ships"
 var shipplacement = []
 var ShipsLocked = false
 signal saveShipPositions

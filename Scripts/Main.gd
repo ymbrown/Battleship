@@ -116,12 +116,12 @@ func rxServerMsg(msg):
 	var part = msg.substr(0,4)
 	if part == "USRP":
 		print("USRP start")
-		savesystem.saveValues("Player", "State", "T")
+		savesystem.saveValues("Player", "state", "T")
 		OS.execute(PYTHONPATH, RADIOPATH, true, output)
 		print(output)
 	elif part == "JAM ":
 		print("Jamming Started")
-		savesystem.saveValues("Player", "State", "A")
+		savesystem.saveValues("Player", "state", "A")
 		OS.execute(PYTHONPATH, RADIOPATH, true, output)
 		print(output)
 	elif part == "[Pla":

@@ -13,7 +13,7 @@ func _ready():
 	config.clear()
 	config.save(save_path)
 
-	saveValues("Player", "State", Player)
+	saveValues("Player", "state", Player)
 	
 	Ships = $ShipPlacement
 	Ships.connect("saveShipPositions", self, "saveShipPos")

@@ -7,7 +7,7 @@ signal save
 signal winCondition
 signal sendFile
 var section = "Positions"
-var key = "Targets"
+var key = "targets"
 var enableUpdate
 
 func _ready():
