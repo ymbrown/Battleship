@@ -12,6 +12,7 @@ onready var client = $ClientHandler
 onready var savesystem = $SaveSystem
 onready var prevent = $Prevention
 
+var block = false
 var targetOn = false
 var MessageOn = false
 var reloadGame = false
@@ -85,6 +86,9 @@ func MainMenuBack():
 	
 	if targetOn:
 		targetsystem.visible = true
+	
+	if block:
+		prevent.visible = true
 
 
 func enablescreens(_section, _key, _shipplacement):
@@ -133,10 +137,12 @@ func rxServerMsg(msg):
 		savesystem.DetermineTargetState()
 	elif part == "Bloc":
 		prevent.visible = true
+		block = true
 	elif part == "Unbl":
 		savesystem.DetermineHitShips()
 		savesystem.DetermineTargetState()
 		prevent.visible = false
+		block = false
 	else:
 		print(msg)
 

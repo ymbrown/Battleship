@@ -11,6 +11,7 @@ var ShipLocked = false;
 var PosName
 var OnGrid = 0
 var shortest_dist = 60
+var mouse = false
 
 func _ready():
 	# Set Ship to starting position
@@ -22,14 +23,17 @@ func _on_Area2D_input_event(_viewport, _event, _shape_idx):
 	if ShipLocked == false:
 		if Input.is_action_just_pressed("left"):
 			selected = true
-		if Input.is_action_just_pressed("right") and global_position.distance_to(StartPointPos) < 10:
-			turn = true
+		#if Input.is_action_just_pressed("right") and global_position.distance_to(StartPointPos) < 10:
+			#turn = true
 		
 func _physics_process(delta):
 	if selected:
 		global_position = lerp(global_position, get_global_mouse_position(), 25*delta)
 	else:
 		global_position = lerp(global_position, rest_point, 10 * delta)
+	if mouse == true:
+		if Input.is_action_just_pressed("keyr") and global_position.distance_to(StartPointPos) < 10:
+			turn = true
 	if turn:
 		if At90 == false:
 			rotate(PI/2)
@@ -73,3 +77,9 @@ func _on_Area2D_area_exited(area):
 	if area.is_in_group("ship"):
 		overlap = overlap - 1
 
+func _on_Area2D_mouse_entered():
+	mouse = true
+
+
+func _on_Area2D_mouse_exited():
+	mouse = false
