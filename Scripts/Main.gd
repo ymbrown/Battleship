@@ -74,6 +74,7 @@ func ShowMainMenu():
 	messagesystem.visible = false
 	shipsystem.visible = false
 	UI.visible = false
+	prevent.visible = false
 
 # From main menu back to game
 func MainMenuBack():
