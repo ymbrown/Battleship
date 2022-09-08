@@ -54,6 +54,8 @@ func _ready():
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("unblock") and Input.is_action_just_pressed("unblockB"):
+		prevent.visible = false
+		blockOn = false
 		ShowMainMenu()
 
 # Shows start menu
