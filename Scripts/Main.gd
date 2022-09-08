@@ -54,7 +54,7 @@ func _ready():
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("unblock") and Input.is_action_just_pressed("unblockB"):
-		prevent.visible = false
+		ShowMainMenu()
 
 # Shows start menu
 func startGame():
@@ -64,6 +64,7 @@ func startGame():
 		NewGame.visible = false
 		reloadGame = true
 	else:
+		client.sendMsg("New Game")
 		test = get_tree().reload_current_scene()
 
 # Enables Target system

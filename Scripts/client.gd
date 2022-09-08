@@ -7,8 +7,8 @@ signal error
 
 var _status: int = 0
 var _stream: StreamPeerTCP = StreamPeerTCP.new()
-
-func _ready() -> void:
+var clientOn = false
+func _ready() -> void: 
 	_status = _stream.get_status()
 
 func _process(delta: float) -> void:
