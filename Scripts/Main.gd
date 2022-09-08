@@ -18,7 +18,6 @@ var MessageOn = false
 var reloadGame = false
 var test
 var PYTHONPATH = "/usr/bin/python3"
-var RADIOPATH = ["/local_disk/code/BattleshipDemo/Backend/Transmitter/TX_main.py"]
 
 func _ready():
 	
@@ -125,6 +124,11 @@ func sendData():
 func rxServerMsg(msg):
 	var output = []
 	var part = msg.substr(0,4)
+	var end_msg = msg.length()
+	var time = "0"
+	if end_msg > 10:
+		time = msg.substr(end_msg-10, end_msg)
+	var RADIOPATH = ["/local_disk/code/BattleshipDemo/Backend/Transmitter/TX_main.py", time]
 	if part == "USRP":
 		savesystem.saveValues("Player", "state", "T")
 		print("USRP start")
