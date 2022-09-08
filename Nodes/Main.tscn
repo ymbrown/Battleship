@@ -41,7 +41,7 @@ margin_bottom = 24.0
 [node name="ClientHandler" parent="." instance=ExtResource( 9 )]
 
 [node name="Prevention" type="Control" parent="."]
-margin_left = 544.0
-margin_top = 248.0
+margin_left = 560.0
+margin_top = 208.0
 margin_right = 1056.0
 margin_bottom = 896.0

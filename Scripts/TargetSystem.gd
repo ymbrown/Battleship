@@ -1,5 +1,6 @@
 extends Node2D
 onready var targeterror = $TargetUI/TargetError
+onready var label = $Label
 var targets = []
 var targetvalues = []
 var TargetReady = false
@@ -11,6 +12,7 @@ var key = "targets"
 var enableUpdate
 
 func _ready():
+	label.visible = false
 	targets = get_tree().get_nodes_in_group("target")
 	var ReadyTarget = $TargetUI/SaveTarget
 	ReadyTarget.connect("pressed", self, "saveTarget")
@@ -18,6 +20,7 @@ func _ready():
 		targetvalues.append(0)
 
 func saveTarget():
+	label.visible = true
 	var num = 0;
 	var i = 0;
 	for child in targets:
@@ -35,6 +38,7 @@ func saveTarget():
 		targeterror.visible = true
 	
 func Update(targetposition):
+	label.visible = false
 	targetvalues = targetposition
 	var i  = 0
 	var win_counter = 0

@@ -12,6 +12,7 @@ onready var client = $ClientHandler
 onready var savesystem = $SaveSystem
 onready var prevent = $Prevention
 
+var blockOn = false
 var targetOn = false
 var MessageOn = false
 var reloadGame = false
@@ -52,6 +53,10 @@ func _ready():
 	
 	client.connect("serverMSG", self, "rxServerMsg")
 
+func _physics_process(delta):
+	if Input.is_action_just_pressed("unblock") and Input.is_action_just_pressed("unblockB"):
+		prevent.visible = false
+
 # Shows start menu
 func startGame():
 	if !reloadGame:
@@ -86,6 +91,9 @@ func MainMenuBack():
 	
 	if targetOn:
 		targetsystem.visible = true
+	
+	if blockOn:
+		prevent.visible = true
 
 
 func enablescreens(_section, _key, _shipplacement):
@@ -133,8 +141,10 @@ func rxServerMsg(msg):
 		savesystem.DetermineTargetState()
 		savesystem.DetermineHitShips()
 	elif part == "Bloc":
+		blockOn = true
 		prevent.visible = true
 	elif part == "Unbl":
+		blockOn = false
 		savesystem.DetermineTargetState()
 		savesystem.DetermineHitShips()
 		prevent.visible = false
