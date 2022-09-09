@@ -53,7 +53,7 @@ func _ready():
 	client.connect("serverMSG", self, "rxServerMsg")
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("unblock") and Input.is_action_just_pressed("unblockB"):
+	if Input.is_action_pressed("unblock") and Input.is_action_pressed("unblockB"):
 		prevent.visible = false
 		blockOn = false
 		ShowMainMenu()
