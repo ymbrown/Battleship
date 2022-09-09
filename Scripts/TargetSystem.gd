@@ -20,7 +20,6 @@ func _ready():
 		targetvalues.append(0)
 
 func saveTarget():
-	label.visible = true
 	var num = 0;
 	var i = 0;
 	for child in targets:
