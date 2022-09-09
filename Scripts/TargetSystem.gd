@@ -31,6 +31,7 @@ func saveTarget():
 		targetvalues[i] = child.targeted
 		i += 1
 	if num == 1:
+		label.visible = true
 		TargetReady = true
 		emit_signal("save", section, key, targetvalues)
 		emit_signal("sendFile")

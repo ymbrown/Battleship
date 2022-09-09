@@ -26,10 +26,9 @@ margin_right = 728.0
 margin_bottom = 496.0
 
 [node name="Label" type="Label" parent="."]
-margin_left = 600.0
-margin_top = 200.0
-margin_right = 928.0
-margin_bottom = 288.0
+margin_left = 608.0
+margin_top = -88.0
+margin_right = 936.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 custom_styles/normal = SubResource( 2 )
